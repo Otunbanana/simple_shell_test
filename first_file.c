@@ -10,51 +10,34 @@
 *
 * Return: execution.
 */
-void first_file(char **agv, char **env)
+void first_file(char **argv, char **env)
 {
-char *args[MAX_COMMAND];
-int arg_count = 0;
-char *command = NULL;
-size_t n = 0;
-ssize_t num_char;
-pid_t pid;
-/*vs code*/
-while (1)
-{
+char *line = NULL;
+size_t len = 0;
+ssize_t read;
+char **args = parse_args(line); // Extracts and tokenizes command line arguments
+
+while (1) {
 printf("cisfun$ ");
 
-num_char = getline(&command, &n, stdin);
-if (num_char == -1)
-{
-free(command);
+read = getline(&line, &len, stdin);
+if (read == -1) {
+free(line);
 exit(EXIT_FAILURE);
 }
 
-args[arg_count] = strtok(command, " ");
-while (args[arg_count] != NULL && arg_count < MAX_COMMAND)
-{
-arg_count++;
-args[arg_count] = strtok(NULL, " ");
-}
-args[arg_count] = NULL;
-
-pid = fork();
-if (pid == -1)
-{
-free(command);
-exit(EXIT_FAILURE);
+if (args[0] == NULL) { // Skips if no command is entered
+free(args);
+continue;
 }
 
-if (pid == 0)
-{
-execve(args[0], args, env);
-printf("%s: No such file or directory\n", args[0]);
-exit(EXIT_FAILURE);
+if (is_builtin(args)) { // Executes built-in commands
+execute_builtin(args);
+} else { // Executes external commands
+execute_external(args, env);
 }
-else
-{
-wait(NULL);
-}
+
+free(args);
 }
 }
 
