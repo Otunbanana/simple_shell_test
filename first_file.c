@@ -15,28 +15,32 @@ void first_file(char **argv, char **env)
 char *line = NULL;
 size_t len = 0;
 ssize_t read;
-char **args = parse_args(line); // Extracts and tokenizes command line arguments
-
-while (1) {
+/*Extracts and tokenizes command line arguments*/
+char **args = parse_args(line);
+while (1)
+{
 printf("cisfun$ ");
-
 read = getline(&line, &len, stdin);
-if (read == -1) {
+if (read == -1)
+{
 free(line);
 exit(EXIT_FAILURE);
 }
-
-if (args[0] == NULL) { // Skips if no command is entered
+/*Skips if no command is entered*/
+if (args[0] == NULL)
+{
 free(args);
 continue;
 }
-
-if (is_builtin(args)) { // Executes built-in commands
+/*Executes built-in commands*/
+if (is_builtin(args))
+{
 execute_builtin(args);
-} else { // Executes external commands
+} else
+{
+/*Executes external commands*/
 execute_external(args, env);
 }
-
 free(args);
 }
 }
