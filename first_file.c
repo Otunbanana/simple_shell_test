@@ -10,13 +10,12 @@
 *
 * Return: execution.
 */
-void first_file(char **argv, char **env)
+void first_file(char **agv, char **env)
 {
 char *line = NULL;
 size_t len = 0;
 ssize_t read;
-/*Extracts and tokenizes command line arguments*/
-char **args = parse_args(line);
+char **args; 
 while (1)
 {
 printf("cisfun$ ");
@@ -26,6 +25,8 @@ if (read == -1)
 free(line);
 exit(EXIT_FAILURE);
 }
+/*Extracts and tokenizes command line arguments*/
+args= parse_args(line);
 /*Skips if no command is entered*/
 if (args[0] == NULL)
 {
