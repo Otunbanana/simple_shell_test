@@ -15,7 +15,7 @@ void first_file(char **agv, char **env)
 char *line = NULL;
 size_t len = 0;
 ssize_t read;
-char **args; 
+char **args;
 while (1)
 {
 printf("cisfun$ ");
@@ -26,7 +26,7 @@ free(line);
 exit(EXIT_FAILURE);
 }
 /*Extracts and tokenizes command line arguments*/
-args= parse_args(line);
+args = parse_args(line);
 /*Skips if no command is entered*/
 if (args[0] == NULL)
 {
@@ -37,7 +37,8 @@ continue;
 if (is_builtin(args))
 {
 execute_builtin(args);
-} else
+}
+else
 {
 /*Executes external commands*/
 execute_external(args, env);
