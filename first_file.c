@@ -18,7 +18,7 @@ char *command = NULL;
 size_t n = 0;
 ssize_t num_char;
 pid_t pid;
-
+/*vs code*/
 while (1)
 {
 printf("cisfun$ ");
