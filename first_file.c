@@ -4,7 +4,7 @@
 #define MAX_COMMAND 10
 /**
  * first_file - Executes terminal commands
- * 
+ *
  * @argv: Argument vector
  * @env: Environment vector
  */
