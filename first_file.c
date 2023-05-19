@@ -3,14 +3,12 @@
 
 #define MAX_COMMAND 10
 /**
-* first_file – execute terminal commad.
-*
-* @agv: argument vector.
-* @env: environment vector.
-*
-* Return: execution.
-*/
-void first_file(char **agv, char **env)
+ * first_file - Executes terminal commands
+ * 
+ * @argv: Argument vector
+ * @env: Environment vector
+ */
+void first_file(char **argv, char **env)
 {
 char *line = NULL;
 size_t len = 0;

@@ -6,6 +6,6 @@
 #include <unistd.h>
 #include <string.h>
  
-void first_file(char **agv, char **env);
+void first_file(char **argv, char **env);
 #endif
 
