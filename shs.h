@@ -7,5 +7,6 @@
 #include <string.h>
  
 void first_file(char **agv, char **env);
+int main(int ac, char **agv, char **env);
 #endif
 
